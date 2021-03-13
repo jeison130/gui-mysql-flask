@@ -4,10 +4,10 @@ from flask import Flask
 connection = Flask(__name__)
 
 connection.config['MYSQL_DATABASE_HOST'] = 'localhost'
-connection.config['MYSQL_DATABASE_PORT'] = 3306
+connection.config['MYSQL_DATABASE_PORT'] = 3308
 connection.config['MYSQL_DATABASE_USER'] = 'root'
-connection.config['MYSQL_DATABASE_PASSWORD'] = 'Jmerazo96*'
-connection.config['MYSQL_DATABASE_DB'] = 'users'
+connection.config['MYSQL_DATABASE_PASSWORD'] = ''
+connection.config['MYSQL_DATABASE_DB'] = 'flask_mvc'
 
 mysql = MySQL(connection)
 
