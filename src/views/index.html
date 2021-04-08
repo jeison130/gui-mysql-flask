@@ -1,6 +1,60 @@
-{% extends 'layouts/home.html' %} {% block tittle %} Home {% endblock %} {% block contents %}
-<h1>Users</h1>
+{% extends 'layouts/home.html' %} 
+{% block tittle %} Inicio {% endblock %} 
 
-<a href="{{ url_for('listUsers') }}" type="submit" class="btn btn-primary">List</a>
-<a href="{{ url_for('createUser') }}" type="submit" class="btn btn-primary">Create</a>
+{% block contents %}
+<div class="row">
+    <div class="col-sm-12">
+        <h1 class="text-center">Gui para MariaDB</h1>
+    </div>
+</div>
+<div class="row mt-4">
+    Listado de bases
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        Bases de datos
+        <ul>
+            {% for database in databases %}
+                <li>
+                    <a href="{{ url_for('listTables', name=database[0]) }}">{{ database[0] }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-sm-8">
+        Tablas
+        {% for table in tables %}
+            <h2 class="mt-2">{{ table[0] }}</h2>
+            <a href="{{ url_for('detailTable', name=database, table=table[0]) }}">
+                Ver registros
+            </a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Campo</th>
+                        <th>Tipo</th>
+                        <th>¿Permitir null?</th>
+                        <th>KEY</th>
+                        <th>Default</th>
+                        <th>Extra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for field in fields[loop.index - 1] %}
+                        <tr>
+                            <td>{{ field[0] }}</td>
+                            <td>{{ field[1] }}</td>
+                            <td>{{ field[2] }}</td>
+                            <td>{{ field[3] }}</td>
+                            <td>{{ field[4] }}</td>
+                            <td>{{ field[5] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock %}

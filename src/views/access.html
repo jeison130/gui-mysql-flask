@@ -1,0 +1,41 @@
+{% extends 'layouts/home.html' %} 
+{% block tittle %} Datos de acceso {% endblock %} 
+
+{% block contents %}
+<form action="{{ url_for('access') }}" method="POST">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="text-center">Gui para MariaDB</h1>
+            
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-sm-4 offset-4">
+            <p>Ingresa los datos de MariaDB para gestionar</p>
+            <div class="mb-3">
+                <label for="host" class="form-label">Host</label>
+                <input type="text" required class="form-control" id="host" name="host">
+            </div>
+
+            <div class="mb-3">
+                <label for="port" class="form-label">Puerto</label>
+                <input type="text" required class="form-control" id="port" name="port">
+            </div>
+
+            <div class="mb-3">
+                <label for="user" class="form-label">Usuario</label>
+                <input type="text" required class="form-control" id="user" name="user">
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+
+            <button class="btn btn-success">
+                Guardar
+            </button>
+        </div>
+    </div>
+</form>
+{% endblock %}
